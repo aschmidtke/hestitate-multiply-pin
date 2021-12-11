@@ -1,5 +1,4 @@
 const { Schema, model }= require('mongoose');
-// date formater?
 
 const UserSchema = new Schema(
     {
@@ -13,7 +12,7 @@ const UserSchema = new Schema(
             type: String,
             unique: true,
             required: "An email address is required!",
-            // need email validation
+            match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/] // need email validation
         },
         thought: [
             {
@@ -24,21 +23,21 @@ const UserSchema = new Schema(
         friends: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "User" // is this self-referencing?
+                ref: "User"
             }
         ]
     },
     {
         toJSON: {
             virtuals: true
-            // getters?
+            // getters? I don't think so?
         },
         id: false
     }
 );
 
 UserSchema.virtual('friendCount').get(function() {
-    return this.friends.reduce((total, friend) => total + friend.length +1, 0); // friend vs friends?
+    return this.friends.length; // friend vs friends?
 });
 
 const User = model('User', UserSchema);

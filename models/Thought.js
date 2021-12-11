@@ -1,5 +1,5 @@
-const { Schema, model, Types } = require('mongoose'); // do we need types?
-// date format needed
+const { Schema, model, Types } = require('mongoose');
+const moment = require('moment');
 
 const ReactionSchema = new Schema(
     {
@@ -17,8 +17,10 @@ const ReactionSchema = new Schema(
             required: true
         },
         createdAt: {
-
-        } // need date format, getters, etc.
+            type: Date,
+            default: Date.now,
+            get: (createdAtVal) => moment(createdAtVal).format('DD MM YY hh:mm:ss')
+        }
     },
     {
         toJSON: {
@@ -36,8 +38,10 @@ const ThoughtSchema = new Schema(
             max: 280
         },
         createdAt: {
-
-        }, // need date formatting
+            type: Date,
+            default: Date.now,
+            get: (createdAtVal) => moment(createdAtVal).format('DD MM YY hh:mm:ss')
+        },
         username: {
             type: String,
             required: true
@@ -47,9 +51,9 @@ const ThoughtSchema = new Schema(
     {
         toJSON: {
             virtuals: true,
-            // getters?
+            getters: true
         },
-        id: false // check this one
+        id: false
     }
 );
 
