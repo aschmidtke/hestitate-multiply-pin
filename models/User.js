@@ -14,7 +14,7 @@ const UserSchema = new Schema(
             required: "An email address is required!",
             match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/] // need email validation
         },
-        thought: [
+        thoughts: [
             {
             type: Schema.Types.ObjectId,
             ref: "Thought"
@@ -23,7 +23,7 @@ const UserSchema = new Schema(
         friends: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "User"
+                ref: "Users"
             }
         ]
     },
