@@ -1,4 +1,5 @@
 # Social Network API
+A Social Media Network backend built using MongoDB, Mongoose and Express.
 
 ## Contents
 - ReadMe.md
@@ -18,7 +19,7 @@
     - user-controller.js
 
 ### Technologies
-JavaScript, MongoDB, Mongoose, Moment
+JavaScript, MongoDB, Mongoose, Moment, Express
 
 Demonstration Link: https://drive.google.com/file/d/1IMSeb_t7-jEKNf9o1KyHqr0pLWGt9Q5n/view
 Repository Link: https://github.com/aschmidtke/hestitate-multiply-pin
